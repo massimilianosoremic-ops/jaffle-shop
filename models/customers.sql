@@ -1,4 +1,4 @@
-(( confi(materialized='view')))
+
 
 with customers as (
 
