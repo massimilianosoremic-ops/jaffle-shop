@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: jaffle_shop
+  - name: ecom
     schema: dbt_msoremic
     description: E-commerce data for the Jaffle Shop
     tables:
