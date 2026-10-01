@@ -23,9 +23,10 @@ clean-targets:
 
 seeds:
   jaffle_shop:
-    +schema: raw
+    +schema: dbt_msoremic
     jaffle-data:
-      +enabled: "{{ var('load_source_data', false) }}"
+      +enabled: true
+      +schema: dbt_msoremic
 
 models:
   jaffle_shop:

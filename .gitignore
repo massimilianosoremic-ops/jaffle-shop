@@ -3,6 +3,7 @@ venv
 .env
 env
 
+sfquickstarts/
 target/
 dbt_packages/
 logs/
