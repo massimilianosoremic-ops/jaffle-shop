@@ -1,23 +1,16 @@
-{% macro generate_schema_name(custom_schema_name, node) %}
+{% macro generate_schema_name(custom_schema_name, node) -%}
 
-    {% set default_schema = target.schema %}
+    {%- set default_schema = target.schema -%}
+    {%- set env = env_var('DBT_ENV_NAME') -%}
 
-    {# seeds go in a global `raw` schema #}
-    {% if node.resource_type == 'seed' %}
+    {%- if custom_schema_name is none or env == 'dev' -%}
+
+        {{ default_schema }}
+
+    {%- else -%}
+
         {{ custom_schema_name | trim }}
 
-    {# non-specified schemas go to the default target schema #}
-    {% elif custom_schema_name is none %}
-        {{ default_schema }}
+    {%- endif -%}
 
-
-    {# specified custom schema names go to the schema name prepended with the the default schema name in prod (as this is an example project we want the schemas clearly labeled) #}
-    {% elif target.name == 'prod' %}
-        {{ default_schema }}_{{ custom_schema_name | trim }}
-
-    {# specified custom schemas go to the default target schema for non-prod targets #}
-    {% else %}
-        {{ default_schema }}
-    {% endif %}
-
-{% endmacro %}
+{%- endmacro %}

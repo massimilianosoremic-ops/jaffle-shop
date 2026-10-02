@@ -1,0 +1,6 @@
+macros:
+  - name: cents_to_dollars
+    description: Converts cents to dollars.
+    arguments:
+      - name: column_name
+        description: The column containing cents.

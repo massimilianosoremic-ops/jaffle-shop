@@ -29,8 +29,12 @@ seeds:
       +schema: dbt_msoremic
 
 models:
+
   jaffle_shop:
     staging:
       +materialized: view
     marts:
       +materialized: table
+
+  snowflake_spend:
+    +enabled: true
